@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map Live User Location using Leaflet.js</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+    <style>
+        #map {
+            height: 350px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+</body>
+
+<script>
+    const map = L.map('map', {
+        attributionControl: false // Disable the default attribution control
+    });
+    // Initializes map
+
+    map.setView([51.505, -0.09], 13);
+    // Sets initial coordinates and zoom level
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: 'Map'
+    }).addTo(map);
+    // Sets map data source and associates with map
+
+    let marker, circle, zoomed;
+
+    navigator.geolocation.watchPosition(success, error);
+
+    function success(pos) {
+        const lat = pos.coords.latitude;
+        const lng = pos.coords.longitude;
+        const accuracy = pos.coords.accuracy;
+
+        if (marker) {
+            map.removeLayer(marker);
+            map.removeLayer(circle);
+        }
+        // Removes any existing marker and circle (new ones about to be set)
+
+        marker = L.marker([lat, lng]).addTo(map);
+        circle = L.circle([lat, lng], { radius: accuracy }).addTo(map);
+        // Adds marker to the map and a circle for accuracy
+
+        if (!zoomed) {
+            zoomed = map.fitBounds(circle.getBounds());
+        }
+
+        map.setView([lat, lng]);
+        // Set map focus to current user position
+    }
+
+    function error(err) {
+
+        if (err.code === 1) {
+            alert("Please allow geolocation access");
+        } else {
+            alert("Cannot get current location");
+        }
+
+    }
+
+    map.on('click', function (e) {
+        const { lat, lng } = e.latlng;
+        console.log(`Clicked location: Latitude: ${lat}, Longitude: ${lng}`);
+
+        fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log("Location Details:", data);
+                console.log("Location country_code:", data.address.country_code);
+                alert(`You clicked at: ${data.display_name}`);
+            })
+            .catch(error => {
+                alert("Error get location:", error);
+            });
+    });
+
+</script>
+
+</html>

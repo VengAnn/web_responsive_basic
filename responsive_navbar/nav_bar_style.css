@@ -1,0 +1,155 @@
+.my-Bg {
+    background-color: white;
+}
+
+#categoryDropdown {
+    background-color: #F3F3F3;
+}
+
+.input-group .form-control {
+    background-color: #F3F3F3;
+}
+
+.custom-badge {
+    display: inline-block;
+    padding: 0.25em 0.35em;
+    font-size: 0.65em;
+    font-weight: 600;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.5em;
+    background-color: blue;
+}
+
+/*////////////////////////////////////////////*/
+/* style.css */
+@media (max-width: 1200px) {
+    .input-group {
+        flex: 1;
+    }
+
+    /* Adjust the search input width */
+    .input-group .form-control {
+        width: 320px !important;
+        /* Set desired width */
+        min-width: 0 !important;
+        /* Override any minimum width restrictions */
+    }
+
+    .search-container {
+        display: flex;
+        align-items: center;
+        margin-right: 20px;
+        margin-top: 5px;
+    }
+}
+
+
+@media (max-width: 991px) {
+    .sidebar {
+        background-color: white !important;
+        backdrop-filter: blur(10px);
+        width: 80% !important;
+    }
+
+    .cart-info p {
+        margin: 0;
+        font-size: small;
+    }
+}
+
+@media (max-width: 780px) {
+    .sidebar {
+        background-color: white !important;
+        backdrop-filter: blur(10px);
+        width: 70% !important;
+    }
+
+    .input-group {
+        flex: 1;
+    }
+
+    /* Adjust the search input width */
+    .input-group .form-control {
+        width: 100px !important;
+        /* Set desired width */
+        min-width: 0 !important;
+        /* Override any minimum width restrictions */
+    }
+
+    .search-container {
+        display: flex;
+        align-items: center;
+        margin-right: 20px;
+        margin-top: 5px;
+    }
+
+    .cart-info p {
+        margin: 0;
+        font-size: small;
+    }
+}
+
+@media (max-width: 470px) {
+    #id_location {
+        width: 100% !important;
+    }
+
+    /* Sidebar */
+    .sidebar {
+        background-color: white !important;
+        backdrop-filter: blur(10px);
+        width: 100% !important;
+        height: 100%;
+    }
+
+    /* Make the search container and other elements stack vertically */
+    .search-container {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-right: 0;
+    }
+
+    .search-container div,
+    .input-group {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    /* Style the input group to keep the search icon inside the input */
+    .input-group {
+        display: flex;
+        flex-wrap: nowrap;
+        width: 100%;
+    }
+
+    .input-group .form-control {
+        width: 100%;
+    }
+
+    .input-group .btn {
+        width: auto;
+        background-color: #007bff;
+        color: white;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+
+
+    .cart-info {
+        margin-top: 10px;
+    }
+
+    .cart-info p {
+        font-size: small;
+        margin: 0;
+    }
+
+    #id_showIcon {
+        justify-content: flex-end;
+    }
+}

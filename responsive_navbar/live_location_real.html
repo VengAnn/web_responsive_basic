@@ -22,9 +22,7 @@
 </body>
 
 <script>
-    const map = L.map('map', {
-        attributionControl: false // Disable the default attribution control
-    });
+    const map = L.map('map');
     // Initializes map
 
     map.setView([51.505, -0.09], 13);
@@ -38,12 +36,32 @@
 
     let marker, circle, zoomed;
 
-    navigator.geolocation.watchPosition(success, error);
+    navigator.geolocation.watchPosition(success, error, {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0
+    });
+
 
     function success(pos) {
         const lat = pos.coords.latitude;
         const lng = pos.coords.longitude;
         const accuracy = pos.coords.accuracy;
+
+        console.log(`Current location: Latitude: ${lat}, Longitude: ${lng}, Accuracy: ${accuracy} meters`);
+
+        //
+        console.log(`Clicked location: Latitude: ${lat}, Longitude: ${lng}`);
+        fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log("Location Details:", data);
+                console.log("Location country_code:", data.address.country_code);
+                alert(`You clicked at: ${data.display_name}`);
+            })
+            .catch(error => {
+                alert("Error get location:", error);
+            });
 
         if (marker) {
             map.removeLayer(marker);

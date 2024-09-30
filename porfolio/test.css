@@ -1,0 +1,27 @@
+.sidebar-content a {
+    color: #000000;
+    display: block;
+    padding: 15px 20px;
+    text-decoration: none;
+}
+
+.sidebar-content a:hover {
+    background-color: #FFD700;
+    color: #333;
+}
+
+.btn-close {
+    background-color: white;
+}
+
+.sidebar-content {
+    padding: 20px;
+}
+
+
+/* Sidebar Light/Dark Mode Toggle */
+.mode-toggle {
+    color: #000000;
+    border-radius: 50%;
+    cursor: pointer;
+}

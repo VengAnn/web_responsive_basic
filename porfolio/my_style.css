@@ -1,0 +1,221 @@
+@media (min-width:992px) {
+
+    html,
+    body {
+        height: 100%;
+        margin: 0;
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .main-content {
+        flex: 1;
+        height: 100%;
+    }
+}
+
+
+@media (min-width:762px) {
+    .main-content {
+        margin-top: 200px;
+    }
+}
+
+.profile-image {
+    width: 80%;
+    min-width: 120px;
+    /* Adjust as needed */
+    height: auto;
+    /* Maintain aspect ratio */
+    min-height: 100px;
+    /* Smooth transition on hover */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Hover effect for scaling */
+.profile-image:hover {
+    transform: scale(1.1);
+    /* Scale up the image by 10% */
+}
+
+/* Default light mode */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --link-color: #000000;
+    --hover-bg: #FFD700;
+    --hover-text: #333;
+    --btn-sidebar: #ffffff;
+    --sidebar-content: #ffffff;
+    --main-color: #000000;
+    --bg-btn: #ffffff;
+    --btn-color: #000000;
+    --icon-toggle-mode: #e9e8e8;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+#btn-sidebar {
+    background: var(--btn-sidebar);
+}
+
+.sidebar-header {
+    background-color: var(--sidebar-content);
+    /* Set the background color */
+    color: var(--text-color);
+}
+
+.sidebar-content a {
+    color: var(--link-color);
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+}
+
+/*custom icon link social media*/
+.icon_custom {
+    padding: 15px;
+    background-color: #e6e7e6;
+    justify-content: center;
+    border-radius: 50%;
+    text-align: center;
+    /* Smooth transition */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+
+}
+
+.icon_custom a {
+    color: var(--hover-text);
+
+}
+
+/* Hover effect */
+.icon_custom:hover {
+    background-color: var(--hover-bg);
+    /* Change background on hover */
+    transform: scale(1.2);
+}
+
+.icon_custom a:hover {
+    color: var(--hover-text);
+}
+
+.btn-custom {
+    background: var(--bg-btn);
+    color: var(--btn-color);
+    padding: 12px 60px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    /* Smooth transition */
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-custom:hover {
+    background: var(--hover-bg);
+    /* Swap gradient colors on hover */
+    transform: translateY(-3px);
+}
+
+
+@media (min-width:992px) {
+    .sidebar-content a:hover {
+        background-color: var(--hover-bg);
+        border-radius: 10%;
+        transform: scale(1.2);
+        color: var(--hover-text);
+    }
+
+    /* Sidebar Light/Dark Mode Toggle */
+    .mode-toggle {
+        color: var(--text-color);
+        background-color: var(--icon-toggle-mode);
+        border-radius: 50%;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        padding: 10px;
+    }
+
+    /* Hover effect for toggle button */
+    .mode-toggle:hover {
+        background-color: var(--hover-bg);
+        /* Change background color on hover */
+        transform: scale(1.2);
+    }
+}
+
+
+@media (max-width:992px) {
+    .sidebar-content {
+        background-color: var(--sidebar-content);
+    }
+
+    .sidebar-content a:hover {
+        background-color: var(--hover-bg);
+        border-radius: 10%;
+        transform: matrix3d();
+        color: var(--hover-text);
+    }
+
+    /* Sidebar Light/Dark Mode Toggle */
+    .mode-toggle {
+        color: var(--text-color);
+
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        padding: 10px;
+    }
+
+    /* Hover effect for toggle button */
+    .mode-toggle:hover {
+        background-color: var(--hover-bg);
+        /* Change background color on hover */
+        transform: matrix3d();
+    }
+}
+
+
+/* Dark mode */
+[data-theme="dark"] {
+    --bg-color: #222;
+    --text-color: #ffffff;
+    --link-color: #ffffff;
+    --hover-bg: #FFD700;
+    --hover-text: #333;
+    --btn-sidebar: #7fbe7d;
+    --sidebar-content: #333;
+    --main-color: #ffaa00;
+    --bg-btn: #eeeeee;
+    --btn-color: #000000;
+    --icon-toggle-mode: #333;
+}
+
+[data-theme="dark"] body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .sidebar-content a {
+    color: var(--link-color);
+}
+
+[data-theme="dark"] .sidebar-content a:hover {
+    background-color: var(--hover-bg);
+    color: var(--hover-text);
+}
+
+
+
+/*Introduction text style*/
+.introduction-text span {
+    color: var(--main-color);
+    font-size: 16px;
+}

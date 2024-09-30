@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>DarkPan - Bootstrap 5 Admin Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+
+    <!-- jQuery Confirm CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.css">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-fluid position-relative d-flex p-0">
+        <!-- Spinner Start -->
+        <div id="spinner"
+            class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+
+        <!-- Sidebar Start -->
+        <div id="idSideBar" class="sidebar pe-4 pb-3">
+            <nav class="navbar navbar-dark">
+                <a href="index.html" class="navbar-brand mx-4 mb-3">
+                    <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>SkinCare</h3>
+                </a>
+                <!-- Close icon positioned to the top right -->
+                <button type="button" class="sidebar-toggler btn btn-link position-absolute top-0 end-0"
+                    style="margin-top: 10px; margin-right: 10px;">
+                    <i class="fa fa-times"></i>
+                </button>
+
+                <div class="d-flex align-items-center ms-4 mb-4">
+                    <div class="position-relative">
+                        <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                        <div
+                            class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
+                        </div>
+                    </div>
+                    <div class="ms-3">
+                        <h6 class="mb-0">Jhon Doe</h6>
+                        <span>Admin</span>
+                    </div>
+                </div>
+                <div class="navbar-nav w-100">
+                    <a id="id_dashBoard" class="nav-item nav-link active"><i
+                            class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+
+                    <a id="id_product" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Product</a>
+
+                </div>
+            </nav>
+        </div>
+        <!-- Sidebar End -->
+
+
+        <!-- Content Start -->
+        <div class="content">
+            <!-- Navbar Start -->
+            <nav class="navbar navbar-expand navbar-dark px-4 py-0">
+                <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
+                    <h2 class="text-primary mb-0"><i class="fa fa-user-edit"></i></h2>
+                </a>
+                <a href="#" class="sidebar-toggler flex-shrink-0">
+                    <i class="fa fa-bars"></i>
+                </a>
+                <div class="navbar-nav align-items-center ms-auto">
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="fa fa-envelope me-lg-2"></i>
+                            <span class="d-none d-lg-inline-flex">Message</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="img/user.jpg" alt=""
+                                        style="width: 40px; height: 40px;">
+                                    <div class="ms-2">
+                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="img/user.jpg" alt=""
+                                        style="width: 40px; height: 40px;">
+                                    <div class="ms-2">
+                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="img/user.jpg" alt=""
+                                        style="width: 40px; height: 40px;">
+                                    <div class="ms-2">
+                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item text-center">See all message</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="fa fa-bell me-lg-2"></i>
+                            <span class="d-none d-lg-inline-flex">Notificatin</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">Profile updated</h6>
+                                <small>15 minutes ago</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">New user added</h6>
+                                <small>15 minutes ago</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">Password changed</h6>
+                                <small>15 minutes ago</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item text-center">See all notifications</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <img class="rounded-circle me-lg-2" src="img/user.jpg" alt=""
+                                style="width: 40px; height: 40px;">
+                            <span class="d-none d-lg-inline-flex">John Doe</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                            <a href="#" class="dropdown-item">My Profile</a>
+                            <a href="#" class="dropdown-item">Settings</a>
+                            <a href="#" class="dropdown-item">Log Out</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <!-- Navbar End -->
+
+
+            <!--show different content-->
+            <div class="container-fluid" id="different-content">
+                <div id="dashboard-content" style="display: block;">
+                    <div>
+                        Dashboard Content
+                    </div>
+                </div>
+
+                <!-- Placeholder for product content -->
+                <div id="product-content" style="display: none;">
+                    <div class="d-flex">
+                        <button id="addProductButton" class="btn btn-primary mb-2">
+                            Add New Product
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+
+                        <button id="addCategory" class="btn btn-secondary mb-2 mx-2">
+                            Add Category
+                            <i class="fa fa-plus-circle ml-2"></i>
+                        </button>
+
+                    </div>
+                    <table class="table" id="product-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Stock</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="product-table-body">
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Below the existing product table -->
+                <div id="product-images-content">
+                    <h4 class=" mt-4">Product Images</h4>
+                    <table class="table" id="product-images-table">
+                        <thead>
+                            <tr>
+                                <th>Product Name</th>
+                                <th>Images</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="product-images-table-body">
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        <!-- Content End -->
+
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <!-- Template Javascript -->
+    <script src="main.js"></script>
+
+
+    <script>
+        // $(document).ready(function () {
+        //     $('#closeSideBarBtn').click(function () {
+        //         $('#sidebar').removeClass('open');
+        //         $('.content').removeClass('open');
+
+        //         // Set the display property to none
+        //         sideBar = document.getElementById('idSideBar');
+        //         sideBar.style.display = "none";
+        //     });
+        // });
+
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const dashboardLink = document.getElementById("id_dashBoard");
+            const productLink = document.getElementById("id_product");
+            const dashboardContent = document.getElementById("dashboard-content");
+            const productContent = document.getElementById("product-content");
+            const productTableBody = document.getElementById('product-table-body');
+            const proImageContent = document.getElementById('product-images-content');
+            const productImagesTableBody = document.getElementById('product-images-table-body');
+
+            // Sample product data with images
+            const products = [
+                { id: 1, name: 'Product 1', category: 'Category A', price: '$50', stock: 100, images: ['img/product1.jpg', 'img/product1_alt.jpg'] },
+                { id: 2, name: 'Product 2', category: 'Category B', price: '$70', stock: 200, images: ['img/product2.jpg'] },
+                { id: 3, name: 'Product 3', category: 'Category C', price: '$60', stock: 150, images: ['img/product3.jpg', 'img/product3_alt.jpg'] },
+            ];
+
+            function removeActiveClass() {
+                document.querySelectorAll('.nav-link').forEach(navLink => {
+                    navLink.classList.remove('active');
+                });
+            }
+
+            function showDashboard() {
+                dashboardContent.style.display = "block";
+                productContent.style.display = "none";
+                proImageContent.style.display = "none";
+            }
+
+            function displayProducts() {
+                productTableBody.innerHTML = '';
+                products.forEach(product => {
+                    const imageList = product.images.map(image => `<img src="${image}" alt="${product.name}" style="width: 50px; height: 50px; margin-right: 5px;">`).join('');
+                    const row = `
+                <tr>
+                    <td>${product.id}</td>
+                    <td>${product.name}</td>
+                    <td>${product.category}</td>
+                    <td>${product.price}</td>
+                    <td>${product.stock}</td>
+                    <td>
+                        <button class="btn btn-warning btn-sm me-2" onclick="editProduct(${product.id})">Edit</button>
+                        <button class="btn btn-danger btn-sm" onclick="deleteProduct(${product.id})">Delete</button>
+                    </td>
+                </tr>
+            `;
+                    productTableBody.innerHTML += row;
+                });
+
+                // Initialize DataTable after the table is populated
+                $('#product-table').DataTable();
+            }
+
+            function displayProductImages() {
+                productImagesTableBody.innerHTML = '';
+                products.forEach(product => {
+                    const imageList = product.images.map(image => `<img src="${image}" alt="${product.name}" style="width: 50px; height: 50px; margin-right: 5px;">`).join('');
+                    const row = `
+            <tr>
+                <td>${product.name}</td>
+                <td>${imageList}</td>
+                <td>
+                     <button class="btn btn-warning btn-sm me-2" onclick="editProduct(${product.id})">Edit</button>
+                        <button class="btn btn-danger btn-sm" onclick="deleteProduct(${product.id})">Delete</button>
+                </td>
+            </tr>
+        `;
+                    productImagesTableBody.innerHTML += row;
+                });
+
+                $('#product-images-table').DataTable();
+            }
+
+            // Functions should be defined in the global scope
+            window.editProduct = function (productId) {
+                alert('Edit product with ID: ' + productId);
+            };
+
+            window.deleteProduct = function (productId) {
+                $.confirm({
+                    title: 'Confirm!',
+                    content: 'Are you sure you want to delete this product?',
+                    buttons: {
+                        confirm: function () {
+                            alert('Deleted product with ID: ' + productId);
+                        },
+                        cancel: function () { }
+                    }
+                });
+            };
+
+            window.deleteProductImage = function (productId) {
+                $.confirm({
+                    title: 'Confirm!',
+                    content: 'Are you sure you want to delete the image for this product?',
+                    buttons: {
+                        confirm: function () {
+                            alert('Deleted image for product with ID: ' + productId);
+                        },
+                        cancel: function () { }
+                    }
+                });
+            };
+
+            function loadProductContent() {
+                displayProducts();
+                displayProductImages();
+                dashboardContent.style.display = "none";
+                productContent.style.display = "block";
+                proImageContent.style.display = "block";
+
+            }
+
+            // Event listeners
+            dashboardLink.addEventListener("click", function (event) {
+                event.preventDefault();
+                removeActiveClass();
+                this.classList.add('active');
+                showDashboard();
+            });
+
+            productLink.addEventListener("click", function (event) {
+                event.preventDefault();
+                removeActiveClass();
+                this.classList.add('active');
+                loadProductContent();
+            });
+
+            // Initialize with dashboard view
+            showDashboard();
+            dashboardLink.classList.add('active');
+        });
+
+
+        function btnAddProduct() {
+            $('#addProductButton').click(function () {
+                $.confirm({
+                    title: 'Add New Product',
+                    columnClass: 'm',
+                    content: `
+            <form action="" class="formName"> 
+                <div class="form-group">
+                    <label>Product Name</label>
+                    <input type="text" id="productName" placeholder="Enter product name" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label>Product Price</label>
+                    <input type="number" id="productPrice" placeholder="Enter product price" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="category" class="form-control" required>
+                        <option value="">Select a category</option>
+                        <option value="Category 1">Category 1</option>
+                        <option value="Category 2">Category 2</option>
+                        <option value="Category 3">Category 3</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Product Description</label>
+                    <textarea id="productDescription" placeholder="Enter product description" class="form-control" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Header</label>
+                    <input type="text" id="header1" placeholder="Enter header" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Product Stock</label>
+                    <input type="number" id="productStock" placeholder="Enter stock quantity" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label>Product Image 1</label>
+                    <input type="file" id="productImage1" accept="image/*" class="form-control" />
+                    <label>Product Image 2</label>
+                    <input type="file" id="productImage2" accept="image/*" class="form-control" />
+                    <label>Product Image 3</label>
+                    <input type="file" id="productImage3" accept="image/*" class="form-control" />
+                    <label>Product Image 4</label>
+                    <input type="file" id="productImage4" accept="image/*" class="form-control" />
+                    <label>Product Image 5</label>
+                    <input type="file" id="productImage5" accept="image/*" class="form-control" />
+                </div>
+            </form>
+            `,
+                    buttons: {
+                        formSubmit: {
+                            text: 'Add Product',
+                            btnClass: 'btn-success',
+                            action: function () {
+                                var productName = $('#productName').val();
+                                var productPrice = $('#productPrice').val();
+                                var category = $('#category').val();
+                                var productDescription = $('#productDescription').val();
+                                var header1 = $('#header1').val();
+                                var productStock = $('#productStock').val();
+
+                                // Get the uploaded images
+                                var imagesArray = [];
+                                for (let i = 1; i <= 5; i++) {
+                                    var fileInput = $(`#productImage${i}`)[0].files[0];
+                                    if (fileInput) {
+                                        imagesArray.push(fileInput);
+                                    }
+                                }
+
+                                // Validate inputs
+                                if (!productName || !productPrice || !category || !productDescription || !productStock) {
+                                    $.alert('Please fill out all required fields!');
+                                    return false;
+                                }
+
+                                // Add the new product to the array and refresh display
+                                const newProduct = {
+                                    id: products.length + 1,
+                                    name: productName,
+                                    category: category,
+                                    price: productPrice,
+                                    stock: productStock,
+                                    description: productDescription,
+                                    header: header1,
+                                    images: imagesArray // Store the uploaded images
+                                };
+                                products.push(newProduct);
+                                $.alert('Product added successfully!');
+                                displayProducts(); // Refresh product display
+                                return false; // Prevent default form submission
+                            }
+                        },
+                        cancel: function () { }
+                    }
+                });
+            });
+        }
+
+
+        btnAddProduct();
+
+        function btnAddCategory() {
+            $('#addCategory').click(function () {
+                $.confirm({
+                    title: 'Add Category',
+                    columnClass: 's',
+                    content: `
+            <form action="" class="formName">
+                <div class="form-group">
+                    <label>Category Name</label>
+                    <input type="text" id="categoryName" placeholder="Enter category name" class="form-control" required />
+                </div>
+            </form>
+            `,
+
+                    buttons: {
+                        formSubmit: {
+                            text: 'Add Category',
+                            btnClass: 'btn-blue',
+                            action: function () {
+                                var categoryName = $('#categoryName').val();
+
+                                // Validate input
+                                if (!categoryName) {
+                                    $.alert('Please enter a category name!');
+                                    return false;
+                                }
+
+                                // Add the new category to the array and refresh display
+                                const newCategory = {
+                                    id: categories.length + 1, // Assuming categories is your category array
+                                    name: categoryName,
+                                };
+                                categories.push(newCategory);
+                                $.alert('Category added successfully!');
+                                displayCategories(); // Refresh category display
+                                return false; // Prevent default form submission
+                            }
+                        },
+                        cancel: function () { }
+                    }
+                });
+            });
+        }
+
+        btnAddCategory();
+    </script>
+
+
+
+</body>
+
+</html>

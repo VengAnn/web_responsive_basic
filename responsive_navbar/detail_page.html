@@ -15,7 +15,49 @@
 
     <!--css-->
     <link rel="stylesheet" href="style_combine_grid_navbar.css" />
-    <title>Combine Responsive Grid with Pagination and NavBar</title>
+    <title>Responsive detail page</title>
+    <style>
+        .quantity-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            /* Adjust space between elements */
+        }
+
+        .quantity-container h7 {
+            margin: 0;
+        }
+
+        @media (min-width: 850px) and (max-width: 1200px) {
+            .quantity-container {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .quantity-container {
+                width: 80%;
+                justify-content: space-between;
+            }
+        }
+
+        /* CSS to truncate the title text after 2 lines */
+        .d-flex.flex-column p {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        #IdImgGrid {
+            justify-content: center;
+            display: flex;
+            object-fit: cover;
+            background-color: #E4EEF9;
+        }
+    </style>
 </head>
 
 <body>
@@ -104,17 +146,123 @@
     </nav>
     <!-- End NavBar -->
 
-    <h5 class="mx-3 mt-3 fw-bold">All Product</h5>
+    <!--Content-->
     <main class="mx-3 mb-3">
-        <div class="row" id="gridContainer">
-            <!-- Grid items will be added here -->
+        <!-- Back Icon and Text Home -->
+        <div class="container d-flex align-items-center mb-3">
+            <div class="d-flex justify-content-center align-items-center rounded-circle"
+                style="width: 40px; height: 40px; background-color: #F3F3F3;">
+                <a href="#" class="text-blue text-decoration-none">
+                    <i class="fa-solid fa-arrow-left fa-lg"></i>
+                </a>
+            </div>
+            <span class="fs-4 ms-2">Home</span>
         </div>
-        <nav aria-label="Page navigation">
-            <ul class="pagination justify-content-start" id="pagination">
-                <!-- Pagination items will be added here -->
-            </ul>
-        </nav>
+
+        <div class="container">
+            <div class="row">
+                <!-- Column 1 with Image and Quantity Selector -->
+                <div class="col-12 col-md-4 d-flex flex-column justify-content-center align-items-center mb-3 mb-md-0">
+                    <img src="images/cerave_product.png" alt="Product Image" class="img-fluid mb-3"
+                        style="max-width: 100%; height: auto;">
+                    <div class="quantity-container">
+                        <h7 class="d-md-block">Quantity</h7>
+                        <div class="d-flex align-items-center">
+                            <button class="btn btn-secondary" id="minusBtn">-</button>
+                            <input type="number" class="form-control mx-2" id="quantityInput" value="0" min="0"
+                                style="width: 60px;">
+                            <button class="btn btn-secondary" id="plusBtn">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Column 2 -->
+                <div class="col-12 col-md-8 d-flex flex-column justify-content-start align-items-start">
+                    <h1 class="product-title" style="padding-left: 0; ">BIORE UV WATERY GEL 90g</h1>
+                    <p>Free 2 Days Shipping | 1 Year Warranty</p>
+
+                    <!-- Reviews and Rating -->
+                    <div class="d-flex gap-4">
+                        <p>4.5 <i class="fa-solid fa-star"></i></p>
+                        <p>392 Reviews</p>
+                    </div>
+
+                    <!--price-->
+                    <div>
+                        <span class="fs-4 fw-bold">$14.99</span>
+                    </div>
+                    <!---->
+                    <div class="price-info mb-3">
+                        <span class="icon-check p-1 rounded-pill" style="background-color: #F3F3F3;"><i
+                                class="fa-solid fa-check"></i></span>
+                        <span class="text">Free return</span>
+                    </div>
+
+                    <p>1,241 Sold in the last 24 hours</p>
+
+                    <div class="d-flex w-100 justify-content-start gap-4">
+                        <!-- Buttons -->
+                        <button class="btn btn-primary ">Buy It Now</button>
+                        <button class="btn btn-secondary">Add to Cart</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!--about product-->
+            <div>
+                <p class="mb-0 mt-2 fw-semibold fs-4">About</p>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-md-3">
+                            <img width="80%" src="images/cerave_product.png" alt="Product Image" class="img-fluid">
+                        </div>
+
+                        <div class="col-12 col-md-9">
+                            <!-- Product Details -->
+                            <ul class="">
+                                <li>ប្រភេទសាច់ជែលស្រួលលាប ត្រជាក់ ទប់ខ្លាញ់បានល្អ</li>
+                                <li>ធននឹងទឹក ធននឹងញើស មិនស្ងួតស្បែក</li>
+                                <li>មិនមានផលរំខាន អ្វីដែលសំខាន់មិនរើសស្បែកមុខខ្លាំងពេកទេ</li>
+                                <li>ស្បែកស្ងួតធម្មតា ខ្លាញ់តិចៗ ស្បែកធម្មតា រឺ Combo អាចប្រើបាន</li>
+                                <li>ចំណុះ ធំ គុណភាពល្អ តំលៃសមរម្យ</li>
+                                <li>Biore UV Watery Essence ជា Sunscreen 50g ដែរពេញនិយម ព្រោះតែគុណភាព តំលៃ និង បរិមាណ
+                                </li>
+                                <li>ការពារកំដៅថ្ងៃបានខ្ពស់ SPF 50+​ PA++++</li>
+                                <li>សមស្រប គ្រប់ប្រភេទស្បែក</li>
+                                <li>ជាប្រភេទសាច់ជែល ងាយស្រួលលាប</li>
+                                <li>លាបហើយមិនស្អិត ជ្រាបចូលស្បែកមុខបានល្អ</li>
+                                <li>ធានាជូនផលិតផលជប៉ុនសុទ្ធ100%</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scrollable Row for Similar Items -->
+            <div style="padding: 15px;">
+                <div class="row">
+                    <div>
+                        <p class="fw-semibold fs-4 p-0 m-0">Similar items</p>
+
+                        <!-- Items Grid -->
+                        <div class="d-flex flex-wrap justify-content-start" id="items-grid">
+                            <!-- Items will be added dynamically by JavaScript -->
+                        </div>
+
+                        <!-- Conditionally Show View More Button -->
+                        <div class="text-center mt-3" id="view-more-container" style="display: none;">
+                            <button class="btn btn-dark" onclick="addMoreItems()">View More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
     </main>
+
 
     <footer class="footer">
         <div class="container">
@@ -183,186 +331,89 @@
             { title: 'CeraVe3', description: 'CeraVe Moisturizing Body Cream with Hyaluronic Acid', price: '10.10$', rating: '4.5', image: 'images/cerave_product.png' },
         ];
 
-        function setUpProfile() {
-            // Select the profile element by its ID
-            const profile = document.getElementById('idProfile');
+        let currentIndex = 0; // Start from the first item
+        const itemsPerPage = 10; // Number of items to show per batch
 
-            // Check if the element exists
-            if (profile) {
-                // Add the click event listener
-                profile.addEventListener('click', function () {
-                    alert('Profile clicked!');
-                });
-            } else {
-                console.error("Element with ID 'idProfile' not found.");
-            }
-        }
+        // Function to add items to the grid
+        function addItems() {
+            const itemsGrid = document.getElementById('items-grid');
 
+            // Determine the number of items to load
+            const itemsToLoad = items.slice(currentIndex, currentIndex + itemsPerPage);
 
-        const itemsPerPage = 10;
-        let currentPage = 1;
-        const totalPages = Math.ceil(items.length / itemsPerPage);
+            // Loop through the items array and create HTML for each item
+            itemsToLoad.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('col-lg-5-custom', 'col-6', 'p-2');
 
-        function showSpinner() {
-            const spinner = document.getElementById('spinner');
-            const paginate = document.getElementById('pagination');
-            paginate.classList.add('hidden');
-            spinner.style.visibility = 'visible';
-            spinner.style.opacity = '1';
-            spinner.style.backgroundColor = 'white';
-        }
-
-        function hideSpinner() {
-            const spinner = document.getElementById('spinner');
-            const paginate = document.getElementById('pagination');
-            paginate.classList.remove('hidden');
-            spinner.style.opacity = '0';
-            spinner.style.visibility = 'hidden';
-        }
-
-        function populateGrid(page) {
-            showSpinner();
-
-            const container = document.getElementById('gridContainer');
-            container.innerHTML = ''; // Clear previous content
-
-            const start = (page - 1) * itemsPerPage;
-            const end = Math.min(start + itemsPerPage, items.length);
-            const paginatedItems = items.slice(start, end);
-
-            paginatedItems.forEach(item => {
-                const col = document.createElement('div');
-                col.classList.add('col-12', 'col-sm-6', 'col-md-4', 'col-lg-5-custom');
-
+                // Create a link for the entire item
                 const link = document.createElement('a');
-                link.href = '#';
+                link.href = '#'; // Replace with the actual URL
                 link.classList.add('text-decoration-none');
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
-                    alert(`on ${item.title}`);
+                    alert(`You clicked on ${item.title}`);
+                    // Simulate navigating to a new page
                     window.location.href = link.href;
                 });
 
-                const card = document.createElement('div');
-                card.classList.add('grid-item');
+                // Create the inner HTML content
+                link.innerHTML = `
+            <div class="border rounded">
+                <div id="IdImgGrid" class="mx-2 mt-2">
+                    <img width="100px" height="100px" src="${item.image}" alt="${item.title}">
+                </div>
+                <p class="product-title">${item.title}</p>
+                <p class="product-description">${item.description}</p>
+                <div class="product-price-rating">
+                    <p class="product-price">${item.price}</p>
+                    <p class="product-rating">${item.rating} <i class="fa-solid fa-star" style="color: yellow;"></i></p>
+                </div>
+            </div>
+        `;
 
-                const imageContainer = document.createElement('div');
-                imageContainer.classList.add('image-container');
+                // Append the link to the itemDiv
+                itemDiv.appendChild(link);
 
-                const img = document.createElement('img');
-                img.src = item.image;
-                img.alt = item.title;
-
-                const title = document.createElement('div');
-                title.classList.add('product-title');
-                title.textContent = item.title;
-
-                const description = document.createElement('div');
-                description.classList.add('product-description');
-                description.textContent = item.description;
-
-                const priceRatingContainer = document.createElement('div');
-                priceRatingContainer.classList.add('product-price-rating');
-
-                const price = document.createElement('div');
-                price.classList.add('product-price');
-                price.textContent = item.price;
-
-                const rating = document.createElement('div');
-                rating.classList.add('product-rating');
-                rating.innerHTML = `<img src="images/Star.png" alt="Star"> ${item.rating}`;
-
-                imageContainer.appendChild(img);
-                priceRatingContainer.appendChild(price);
-                priceRatingContainer.appendChild(rating);
-                card.appendChild(imageContainer);
-                card.appendChild(title);
-                card.appendChild(description);
-                card.appendChild(priceRatingContainer);
-                col.appendChild(card);
-                link.appendChild(card); // Wrap card inside the link
-                col.appendChild(link);
-                container.appendChild(col);
+                // Append the itemDiv to the grid
+                itemsGrid.appendChild(itemDiv);
             });
 
-            updatePagination();
+            // Update the currentIndex to the next set of items
+            currentIndex += itemsPerPage;
 
-            setTimeout(() => {
-                hideSpinner();
-            }, 500);
-        }
-
-        function updatePagination() {
-            const pagination = document.getElementById('pagination');
-            pagination.innerHTML = ''; // Clear previous pagination
-
-            for (let i = 1; i <= totalPages; i++) {
-                const li = document.createElement('li');
-                li.classList.add('page-item');
-                if (i === currentPage) li.classList.add('active');
-
-                const a = document.createElement('a');
-                a.classList.add('page-link');
-                a.href = '#';
-                a.textContent = i;
-                a.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    currentPage = i;
-                    populateGrid(currentPage);
-                });
-
-                li.appendChild(a);
-                pagination.appendChild(li);
+            // Hide the "View More" button if all items are loaded
+            if (currentIndex >= items.length) {
+                document.getElementById('view-more-container').style.display = 'none';
+            } else {
+                document.getElementById('view-more-container').style.display = 'block';
             }
-
-            // Add 'Next' button
-            const nextLi = document.createElement('li');
-            nextLi.classList.add('page-item');
-            if (currentPage === totalPages) nextLi.classList.add('disabled');
-
-            const nextA = document.createElement('a');
-            nextA.classList.add('page-link');
-            nextA.href = '#';
-            nextA.textContent = 'Next';
-            nextA.addEventListener('click', (e) => {
-                e.preventDefault();
-                if (currentPage < totalPages) {
-                    currentPage++;
-                    populateGrid(currentPage);
-                }
-            });
-
-            nextLi.appendChild(nextA);
-            pagination.appendChild(nextLi);
-
-            // Add 'Previous' button
-            const prevLi = document.createElement('li');
-            prevLi.classList.add('page-item');
-            if (currentPage === 1) prevLi.classList.add('disabled');
-
-            const prevA = document.createElement('a');
-            prevA.classList.add('page-link');
-            prevA.href = '#';
-            prevA.textContent = 'Previous';
-            prevA.addEventListener('click', (e) => {
-                e.preventDefault();
-                if (currentPage > 1) {
-                    currentPage--;
-                    populateGrid(currentPage);
-                }
-            });
-
-            prevLi.appendChild(prevA);
-            pagination.insertBefore(prevLi, pagination.firstChild);
         }
 
-        // Initial population of grid and pagination
-        populateGrid(currentPage);
-        setUpProfile();
-        setTimeout(() => {
-            hideSpinner();
-        }, 500);
+        // Function to add more items when "View More" is clicked
+        function addMoreItems() {
+            addItems();
+        }
 
+        // Initial load of items
+        addItems();
+
+        ///////////////////////////////////////
+
+
+        document.getElementById('minusBtn').addEventListener('click', function () {
+            let input = document.getElementById('quantityInput');
+            let value = parseInt(input.value);
+            if (value > 1) {
+                input.value = value - 1;
+            }
+        });
+
+        document.getElementById('plusBtn').addEventListener('click', function () {
+            let input = document.getElementById('quantityInput');
+            let value = parseInt(input.value);
+            input.value = value + 1;
+        });
     </script>
 </body>
 

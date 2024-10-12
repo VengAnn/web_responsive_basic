@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Maps with Current Location</title>
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h3>Google Maps Example with Current Location</h3>
+    <button id="getLocationBtn">Get Current Location</button>
+    <div id="map"></div>
+
+    <script>
+        let map;
+        let marker;
+
+        function getCurrentLocation() {
+            console.log('Attempting to retrieve location...');
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (pos) {
+                    const userLoc = {
+                        lat: pos.coords.latitude,
+                        lng: pos.coords.longitude,
+                        accuracy: pos.coords.accuracy // Add accuracy to user location
+                    };
+
+                    console.log('Location retrieved: ', userLoc);
+
+                    // Check if latitude and longitude are valid numbers
+                    if (typeof userLoc.lat !== 'number' || typeof userLoc.lng !== 'number') {
+                        console.error('Invalid latitude or longitude values:', userLoc);
+                        alert('Invalid location coordinates. Please try again.');
+                        return; // Exit the function early
+                    }
+
+                    // Check accuracy
+                    if (userLoc.accuracy > 100) { // Change this threshold as needed
+                        alert(`Warning: The location accuracy is poor (Accuracy: ${userLoc.accuracy} meters).`);
+                        // Fallback to default location (Phnom Penh)
+                        const defaultLoc = { lat: 11.5564, lng: 104.9282 };
+                        initMap(defaultLoc.lat, defaultLoc.lng); // Use default location
+                    } else {
+                        alert(`Current location accuracy is good (Accuracy: ${userLoc.accuracy} meters).`);
+                        // Initialize the map with the user's location
+                        initMap(userLoc.lat, userLoc.lng);
+                    }
+                }, function (error) {
+                    handleLocationError(error.message);
+                }, { enableHighAccuracy: true });
+            } else {
+                handleLocationError('Geolocation is not supported by this browser.');
+            }
+        }
+
+        function initMap(lat, lng) {
+            const userLoc = { lat: lat, lng: lng };
+
+            // Check if lat and lng are valid before creating the map
+            if (typeof userLoc.lat !== 'number' || typeof userLoc.lng !== 'number') {
+                console.error('Invalid coordinates for map initialization:', userLoc);
+                alert('Invalid coordinates for map initialization. Please check your location settings.');
+                return; // Exit the function early
+            }
+
+            // Initialize the map and marker
+            map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 12,
+                center: userLoc,
+            });
+
+            // Clear existing marker if any
+            if (marker) {
+                marker.setMap(null);
+            }
+
+            marker = new google.maps.Marker({
+                position: userLoc,
+                map: map,
+            });
+        }
+
+        function handleLocationError(errorMessage) {
+            console.error('Geolocation Error: ', errorMessage);
+            alert(errorMessage);
+
+            // Fallback to default location (Phnom Penh)
+            const defaultLoc = { lat: 11.5564, lng: 104.9282 };
+            initMap(defaultLoc.lat, defaultLoc.lng);
+        }
+
+        document.getElementById('getLocationBtn').addEventListener('click', getCurrentLocation);
+    </script>
+
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDigqha53w9-xc_IwFjNVSVuwUOpQvCgVE&callback=initMap&libraries=marker">
+        </script>
+
+</body>
+
+</html>

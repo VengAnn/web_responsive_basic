@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FCM (Firebase Cloud Messaging)</title>
+
+</head>
+
+<body>
+    <h1>Recieved Firebase Cloud Messaging Just working when browser Opened</h1>
+    <h2>If you want push notification when browser is closed you can use webPush Notification can be push web browser
+    </h2>
+    <h3>But on IOS Browser We need use PAW</h4>
+        <h5>For laravel you can visite this:
+            https://blog.jobins.jp/building-a-progressive-web-applicationpwa-with-laravel
+        </h5>
+
+        <div id="device-token">Device Token:</div>
+
+        <!--info received-->
+        <div id="message"></div>
+
+        <!--all info received-->
+        <div id="all-message"></div>
+
+        <!--show url image received-->
+        <div id="image-url" style="margin-top: 20px; align-items: center;"></div>
+
+
+        <!-- Firebase SDKs for version -->
+        <script src="https://www.gstatic.com/firebasejs/9.14.0/firebase-app-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.14.0/firebase-messaging-compat.js"></script>
+
+        <script>
+            const firebaseConfig = {
+                apiKey: "AIzaSyAaHqSGC5JDKwYfjjE_ALQzf2wNraheTAQ",
+                authDomain: "laravel-fcm-773f4.firebaseapp.com",
+                projectId: "laravel-fcm-773f4",
+                storageBucket: "laravel-fcm-773f4.firebasestorage.app",
+                messagingSenderId: "671659420390",
+                appId: "1:671659420390:web:59a8cc81bdbbba6299a927"
+            };
+
+            const app = firebase.initializeApp(firebaseConfig);
+            const messaging = firebase.messaging();
+
+
+            // generate device token using public key id
+            // this vapidkey get from firebase project go to 
+            // Project Setting => Cloud Messaging Scroll down find Web configuration in Web Push certificates have public key
+            messaging.getToken({ vapidKey: "BImdTtqUysqrr7kvW6vxdX2WyZc2jrBLn4C_gOl8aHIfFdkX6jcBk9gF5dBMPwJsUISRKZzAHr4W85m4uXgtV_E" }).then((currentToken) => {
+                console.log("Token: " + currentToken);
+
+                document.getElementById("device-token").innerHTML = "Token: " + currentToken;
+
+                sendTokenToServer(currentToken)
+            }).catch((err) => {
+                console.log("error:" + err);
+                // if error
+                setTokenSentToServer(false)
+            })
+
+            function sendTokenToServer(currentToken) {
+                if (!isTokenSentToServer()) {
+                    console.log('Sending token to server ...');
+                    setTokenSentToServer(true)
+                } else {
+                    console.log('Token already available in the server');
+                }
+            }
+            function isTokenSentToServer() {
+                return window.localStorage.getItem('sentToServer') === '1'
+            }
+            function setTokenSentToServer(sent) {
+                window.localStorage.setItem('sentToServer', sent ? '1' : '0')
+            }
+
+            messaging.onMessage((payload) => {
+                console.log("Message received: ", payload);
+                document.getElementById('message').innerHTML = `Message received from pyload: ${payload.notification.title} - ${payload.notification.body}`;
+
+                document.getElementById('all-message').innerHTML = `All Info received : ${JSON.stringify(payload)}`;
+
+                console.log('image url:' + payload.notification.image);
+                if (payload.notification.image) {
+                    document.getElementById('image-url').innerHTML = `<img src='${payload.notification.image}' alt='Image' width='300px' height='300px'>`;
+                } else {
+                    document.getElementById('image-url').innerHTML = "No Image URL";
+                }
+            });
+        </script>
+
+</body>
+
+</html>
